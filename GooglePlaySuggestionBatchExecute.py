@@ -10,6 +10,7 @@ Created on Thu May 23 22:02:16 2024
 import requests
 import json
 import itertools
+import csv
 
 
 #######################################
@@ -98,35 +99,7 @@ for term in combinations:
 print("Len result list")
 print(len(result_list))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+with open('result_list.csv', 'w', newline='', encoding='utf-8') as f:
+    writer = csv.DictWriter(f, fieldnames=["search_term", "suggested_keyword"])
+    writer.writeheader()
+    writer.writerows(result_list)
